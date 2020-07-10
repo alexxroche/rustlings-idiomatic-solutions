@@ -6,7 +6,7 @@
 // even after you already figured it out. If you got everything working and
 // feel ready for the next exercise, remove the `I AM NOT DONE` comment below.
 
-// #I AM NOT DONE
+// I AM NOT DONE
 
 fn main() {
     let x = 5;
