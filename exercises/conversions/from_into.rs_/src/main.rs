@@ -1,1 +1,0 @@
-/home/alexx/files/lab/rust/rustlings-idiomatic-solutions/exercises/conversions/from_into.rs/a_from_into.rs
