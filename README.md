@@ -1,7 +1,9 @@
 # rustlings-idiomatic-solutions
-A curated collection of solutions to the rustlings exercises
+A curated collection of solutions to the 
+[rustlings](https://github.com/rust-lang/rustlings) exercises
 
-Similar structure to the rustlings exercises, except there is a directory for each exercise in the form:
+Similar structure to the rustlings exercises, except there is a 
+directory for each exercise in the form:
 
 ./exercises/example/solve1.rs -> ./exercises/example/solve1.rs_/solve1.rs  
 

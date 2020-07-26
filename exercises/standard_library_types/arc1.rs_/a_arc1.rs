@@ -5,16 +5,17 @@
 // Execute `rustlings hint arc1` for hints :)
 // and/or read https://doc.rust-lang.org/std/sync/struct.Arc.html
 
+// I AM NOT DONE
 // Read https://medium.com/@DylanKerler1/how-arc-works-in-rust-b06192acd0a6 
 //  if you need help understanding Arc (and how Arc::clone(&arc_ref) "unwraps" the Arc)
 
-#![forbid(unused_imports)] //Do not remove this, (or the next) line.
+#![forbid(unused_imports)] // Do not change this, (or the next) line.
 use std::sync::Arc;
 use std::thread;
 
 fn main() {
     let numbers: Vec<_> = (0..100u32).collect();
-    let shared_numbers = Arc::new(numbers); //TODONE
+    let shared_numbers = Arc::new(numbers);// TODO
     let mut joinhandles = Vec::new();
 
     for offset in 0..8 {
