@@ -1,14 +1,15 @@
 // structs1.rs
 // Address all the TODOs to make the tests pass!
+// Make me compile! Execute `rustlings hint structs1` for hints :)
 
 // I AM NOT DONE
 
-struct ColorClassicStruct {
-    name: String,
-    hex: String,
+struct ColorClassicStruct<'a> {
+    name: &'a str,
+    hex: &'a str
 }
 
-struct ColorTupleStruct(String, String);
+struct ColorTupleStruct<'a>(&'a str, &'a str);
 
 #[derive(Debug)]
 struct UnitStruct;
@@ -20,7 +21,7 @@ mod tests {
     #[test]
     fn classic_c_structs() {
         // Instantiate a classic c struct!
-        let green = ColorClassicStruct{name:String::from("green"), hex:String::from("#00FF00")};
+        let green = ColorClassicStruct{name:"green",hex:"#00FF00"};
 
         assert_eq!(green.name, "green");
         assert_eq!(green.hex, "#00FF00");
@@ -28,8 +29,8 @@ mod tests {
 
     #[test]
     fn tuple_structs() {
-        // TODO: Instantiate a tuple struct!
-        let green = ColorTupleStruct(String::from("green"), String::from("#00FF00"));
+        // Instantiate a tuple struct!
+        let green = ColorTupleStruct("green","#00FF00");
 
         assert_eq!(green.0, "green");
         assert_eq!(green.1, "#00FF00");
