@@ -26,11 +26,10 @@ struct Color {
 impl TryFrom<(i16, i16, i16)> for Color {
     type Error = String;
     fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
-        //rdfa:src="https://github.com/sumedhmohile/rustlings-solutions/blob/master/conversions/try_from_into.rs"
         Ok (Color {
-            red: u8::try_from(tuple.0).unwrap(),
-            green: u8::try_from(tuple.1).unwrap(),
-            blue: u8::try_from(tuple.2).unwrap(),
+            red: u8::try_from(tuple.0)?,
+            green: u8::try_from(tuple.1)?,
+            blue: u8::try_from(tuple.2)?,
         })
     }
 }
@@ -39,11 +38,7 @@ impl TryFrom<(i16, i16, i16)> for Color {
 impl TryFrom<[i16; 3]> for Color {
     type Error = String;
     fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
-       Ok (Color {
-            red: u8::try_from(arr[0]).unwrap(),
-            green: u8::try_from(arr[1]).unwrap(),
-            blue: u8::try_from(arr[2]).unwrap(),
-        })
+       arr[..].try_into()
     }
 }
 
@@ -52,13 +47,12 @@ impl TryFrom<&[i16]> for Color {
     type Error = String;
     fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
        if slice.len() != 3 {
-            panic!();
+            return Err("panic!".into();
         }
-        Ok (Color {
-            red: u8::try_from(slice[0]).unwrap(),
-            green: u8::try_from(slice[1]).unwrap(),
-            blue: u8::try_from(slice[2]).unwrap(),
-        })
+        (slice[0],
+	 slice[1],
+	 slice[2])
+	    .try_into()
     }
 }
 
