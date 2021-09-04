@@ -21,17 +21,18 @@ struct Person {
 // If while parsing the age, something goes wrong, then return an error
 // Otherwise, then return a Result of a Person object
 impl FromStr for Person {
-    type Err = String;
+    type Err = Box<dyn error::Error>;
     fn from_str(s: &str) -> Result<Person, Self::Err> {
-        match s.split(',').collect::<Vec<&str>>()[..] {
-            [name, age] if name.len() > 0 => age
-                .parse()
+        let split = s.split(",").collect::<Vec<&str>>();
+        match split[..] {
+            [name, age] if !name.is_empty() => age
+                .parse::<usize>()
                 .map(|age| Self {
                     name: name.to_string(),
                     age,
                 })
-                .map_err(|x| "failed".to_string()),
-            _ => Err("failed".to_string()),
+                .map_err(|_| From::from("Failed")),
+            _ => Err(From::from("Invalid input")),
         }
     }
 }
@@ -92,5 +93,4 @@ mod tests {
     fn missing_name_and_invalid_age() {
         ",one".parse::<Person>().unwrap();
     }
-
 }
