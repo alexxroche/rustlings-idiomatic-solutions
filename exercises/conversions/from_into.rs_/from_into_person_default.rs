@@ -36,22 +36,19 @@ impl Default for Person {
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
         if s.len() == 0 {
-            return Default::default();
+            return Person::default();
         }
         let parts: Vec<&str> = s.split(',').collect();
         let name = if parts.len() == 2 && parts[0] != "" {
             String::from(parts[0])
         } else {
-            return Default::default();
+            return Person::default();
         };
         let age = match parts[1].parse::<usize>() {
             Ok(x) => x,
-            Err(_) => return Default::default(),
+            Err(_) => return Person::default(),
         };
-        Person {
-            name,
-            age,
-        }
+        Person { name, age }
     }
 }
 
