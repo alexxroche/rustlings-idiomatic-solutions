@@ -23,6 +23,11 @@ impl Package {
 
     fn is_international(&self) -> bool {
         &self.sender_country != &self.recipient_country
+    /*
+        The above line was a patch from ksh-b that replaced an
+        imperative version:
+        if &self.sender_country != &self.recipient_country { true}else{false}
+    */
     }
 
     fn get_fees(&self, cents_per_kg: i32) -> i32 {
